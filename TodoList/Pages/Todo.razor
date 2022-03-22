@@ -1,8 +1,19 @@
 ﻿@page "/Todo"
+@inject NavigationManager _navigationManager;
+
 
 <PageTitle>Todo</PageTitle>
 
 <h1>Todo(@todos.Count(todo => !todo.IsDone))</h1>
+
+@if(Titel != null)
+{
+    <h1>@Titel</h1>
+}
+else
+{
+    <h1>nothing here</h1>
+}
 
 <ul>
     @foreach (var todo in todos)
@@ -17,16 +28,9 @@
 <input placeholder="Something todo" @bind="newTodo" />
 <button @onclick="AddTodo">Add Todo</button>
 
-@code {
-    private List<TodoItem> todos = new();
-    private string? newTodo;
 
-    private void AddTodo()
-    {
-        if(!string.IsNullOrWhiteSpace(newTodo))
-        {
-            todos.Add(new TodoItem { Title = newTodo });
-            newTodo = string.Empty;
-        }
-    }
+<a href="javascript:;" @onclick="Navigate">Overview</a>
+
+@code {
+   
 }
