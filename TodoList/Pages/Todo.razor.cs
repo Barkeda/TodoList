@@ -21,5 +21,10 @@
             Titel = "EUX H5 Todo list";
             base.OnInitialized();
         }
+
+        private void Navigate()
+        {
+            _navigationManager.NavigateTo("/Overview");
+        }
     }
 }
